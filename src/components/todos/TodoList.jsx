@@ -34,10 +34,10 @@ const TodoList = () => {
     setIsFormOpen(true);
   };
 
-  const handleFormClose = () => {
-    setIsFormOpen(false);
-    setEditingTodo(null);
-  };
+//   const handleFormClose = () => {
+//     setIsFormOpen(false);
+//     setEditingTodo(null);
+//   };
 
 //   const filteredTodos = todos.filter((todo) => {
 //     // Filter by view (tab)
@@ -175,7 +175,7 @@ let filteredTodos = [];
               {editingTodo ? "Edit Task" : "Create New Task"}
             </DialogTitle>
           </DialogHeader>
-          <TodoForm onClose={handleFormClose} initialData={editingTodo} />
+          {/* <TodoForm onClose={handleFormClose} initialData={editingTodo} /> */}
         </DialogContent>
       </Dialog>
     </div>

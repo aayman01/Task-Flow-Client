@@ -1,14 +1,11 @@
 import React from "react";
-// import TodoList from "@/components/todos/TodoList";
 import AnimatedContainer from "@/components/ui/AnimatedContainer";
 import { Card, CardContent } from "@/components/ui/card";
-
 import { CheckCircle, Circle, Clock } from "lucide-react";
+import TodoList from "@/components/todos/TodoList";
 
-// Simplified with plain JavaScript patterns
+
 const Dashboard = () => {
-
-
 
   let totalTasks = 3;
   let completedTasks = 4;
@@ -87,6 +84,8 @@ const Dashboard = () => {
           </Card>
         ))}
       </AnimatedContainer>
+      <TodoList />
+
     </div>
   );
 };
