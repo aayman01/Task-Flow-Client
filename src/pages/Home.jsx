@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import AnimatedContainer from "@/components/ui/AnimatedContainer";
+import Navbar from "@/components/NavBar";
 
 const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Navbar />
       <main>
         {/* Hero Section */}
         <section className="pt-12 pb-24 flex flex-col items-center justify-center h-screen">
