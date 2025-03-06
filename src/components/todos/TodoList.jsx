@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-// import TodoItem from "./TodoItem";
-// import TodoForm from "./TodoForm";
+
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -19,6 +18,7 @@ import {
 import { Plus, Search, FilterX } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import AnimatedContainer from "@/components/ui/AnimatedContainer";
+import TodoForm from "./TodoForm";
 
 const TodoList = () => {
 //   const { todos, isLoading } = useTodos();
@@ -34,10 +34,10 @@ const TodoList = () => {
     setIsFormOpen(true);
   };
 
-//   const handleFormClose = () => {
-//     setIsFormOpen(false);
-//     setEditingTodo(null);
-//   };
+  const handleFormClose = () => {
+    setIsFormOpen(false);
+    setEditingTodo(null);
+  };
 
 //   const filteredTodos = todos.filter((todo) => {
 //     // Filter by view (tab)
@@ -175,7 +175,7 @@ let filteredTodos = [];
               {editingTodo ? "Edit Task" : "Create New Task"}
             </DialogTitle>
           </DialogHeader>
-          {/* <TodoForm onClose={handleFormClose} initialData={editingTodo} /> */}
+          <TodoForm onClose={handleFormClose} />
         </DialogContent>
       </Dialog>
     </div>
