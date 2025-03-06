@@ -13,7 +13,7 @@ import AnimatedContainer from "@/components/ui/AnimatedContainer";
 
 const Navbar= () => {
   const navigate = useNavigate();
-  let isAuthenticated = true;
+  let isAuthenticated = false;
   const user = {
     name: "John Doe",
     email: "john.doe@example.com",
@@ -113,7 +113,7 @@ const Navbar= () => {
         ) : (
           <div className="flex items-center gap-2">
             <Button variant="ghost" asChild>
-              <Link to="/auth">Login</Link>
+              <Link to="/login">Login</Link>
             </Button>
             <Button asChild>
               <Link to="/auth">Register</Link>

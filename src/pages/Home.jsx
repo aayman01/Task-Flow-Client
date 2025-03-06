@@ -19,7 +19,7 @@ const Home = () => {
 
             <AnimatedContainer animation="fade-in" delay={200}>
               <p className="mt-6 text-lg text-gray-600 max-w-2xl">
-                Stay organized with SecureSync, the task manager that combines
+                Stay organized with TaskFlow, the task manager that combines
                 security, simplicity, and Google Calendar integration.
               </p>
             </AnimatedContainer>
@@ -29,7 +29,7 @@ const Home = () => {
               delay={400}
               className="mt-8 flex flex-wrap gap-4 justify-center"
             >
-              <Button size="lg" className="text-base px-8">
+              <Button size="lg" className="text-base px-8 bg-blue-400 hover:bg-blue-500">
                 Get Started
                 {/* <Link to={isAuthenticated ? "/dashboard" : "/auth"}>
                   {isAuthenticated ? "Go to Dashboard" : "Get Started"}{" "}
