@@ -1,7 +1,8 @@
+import { useSession } from '@/context/SessionContext';
 import { Navigate } from 'react-router';
 
 const ProtectedRoute = ({ children }) => {
-    const isLoggedIn = true;
+    const {isLoggedIn} = useSession();
     return isLoggedIn ? children : <Navigate to="/login" />;
 };
 
