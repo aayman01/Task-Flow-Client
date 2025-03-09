@@ -10,21 +10,39 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import toast from "react-hot-toast";
+import { loginUser } from "@/lib/authApi";
 
 const Login = () => {
-
-const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true)
-    setIsLoading(false)
-    setError(null)
-    console.log(e.Form.value)
+    setError("");
+    try {
+      setIsLoading(true);
+      const { data } = await loginUser(email, password);
+      if (data) {
+        setIsLoading(false);
+        setEmail("");
+        setPassword("");
+        setError("");
+        toast.success(data.message);
+        navigate("/dashboard");
+      }
+      // console.log(data);
+    } catch (error) {
+      // console.log("Error login", error);
+      setError("Credentials are incorrect",error);
+      setIsLoading(false);
+      setEmail("");
+      setPassword("");
+    }
   };
 
   return (
@@ -34,8 +52,8 @@ const [isLoading, setIsLoading] = useState(false);
           <CardTitle className="text-2xl text-center font-bold">
             Welcome Back
           </CardTitle>
-          <CardDescription className="text-center">
-            Sign in to access your tasks
+          <CardDescription className="text-center font-medium">
+            Log in to access your tasks
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -72,7 +90,11 @@ const [isLoading, setIsLoading] = useState(false);
               />
             </div>
             {error && <p className="text-sm text-red-500 mt-2">{error}</p>}
-            <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600" disabled={isLoading}>
+            <Button
+              type="submit"
+              className="w-full bg-blue-500 hover:bg-blue-600"
+              disabled={isLoading}
+            >
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -84,7 +106,13 @@ const [isLoading, setIsLoading] = useState(false);
             </Button>
           </form>
           <div className="text-center text-sm mt-4">
-            Don't have an account? <Link to="/register" className="text-red-500 font-medium hover:underline">Sign up</Link>
+            Don't have an account?{" "}
+            <Link
+              to="/register"
+              className="text-red-500 font-medium hover:underline"
+            >
+              Sign up
+            </Link>
           </div>
         </CardContent>
       </Card>

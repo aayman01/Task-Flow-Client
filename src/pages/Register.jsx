@@ -35,10 +35,9 @@ const Register = () => {
         toast.success(data.message);
         navigate("/login");
       }
-      console.log(data);
-    } catch (error) {
-      console.log("Error registering", error);
-      setError("Something went wrong on registering");
+    } catch (err) {
+    //   console.log("Error registering", error);
+      setError("Something went wrong on registering",err);
       setIsLoading(false);
       setEmail("");
       setPassword("");
