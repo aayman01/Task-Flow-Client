@@ -32,30 +32,9 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/setup-2fa"
-              element={
-                <ProtectedRoute>
-                  <Setup2FA />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/verify-2fa"
-              element={
-                <ProtectedRoute>
-                  <Verify2FA />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/verify-email"
-              element={
-                <ProtectedRoute>
-                  <VerifyEmail />
-                </ProtectedRoute>
-              }
-            />
+            <Route path="/setup-2fa" element={<Setup2FA />} />
+            <Route path="/verify-2fa" element={<Verify2FA />} />
+            <Route path="/verify-email" element={<VerifyEmail />} />
           </Routes>
           <Toaster />
         </QueryClientProvider>
