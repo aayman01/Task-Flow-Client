@@ -116,7 +116,7 @@ const Navbar= () => {
               <Link to="/login">Login</Link>
             </Button>
             <Button asChild>
-              <Link to="/auth">Register</Link>
+              <Link to="/register">Register</Link>
             </Button>
           </div>
         )}

@@ -7,6 +7,7 @@ import ErrorPage from "./pages/ErrorPage";
 import Setup2FA from "./pages/Setup2FA";
 import Verify2FA from "./pages/Verify2FA";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Register from "./pages/Register";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route
             path="/dashboard"
             element={
