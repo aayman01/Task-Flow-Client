@@ -9,22 +9,40 @@ import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { register } from "@/lib/authApi";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [name, setName] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null);
-    setIsLoading(false)
-    
+    setError("");
+    try {
+      setIsLoading(true);
+      const { data } = await register(email, password);
+      if (data) {
+        setIsLoading(false);
+        setEmail("");
+        setPassword("");
+        setError("");
+        toast.success(data.message);
+        navigate("/login");
+      }
+      console.log(data);
+    } catch (error) {
+      console.log("Error registering", error);
+      setError("Something went wrong on registering");
+      setIsLoading(false);
+      setEmail("");
+      setPassword("");
+    }
   };
 
   return (
@@ -40,19 +58,6 @@ const Register = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-1">
-                Name
-              </label>
-              <Input
-                id="name"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Your name"
-                className="form-input"
-              />
-            </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-1">
                 Email
@@ -81,22 +86,6 @@ const Register = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="********"
                 required
-                className="form-input"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="confirmPassword"
-                className="block text-sm font-medium mb-1"
-              >
-                Confirm Password
-              </label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="********"
                 className="form-input"
               />
             </div>

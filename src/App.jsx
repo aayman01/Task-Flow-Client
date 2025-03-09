@@ -8,6 +8,7 @@ import Setup2FA from "./pages/Setup2FA";
 import Verify2FA from "./pages/Verify2FA";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Register from "./pages/Register";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => {
             }
           />
         </Routes>
+        <Toaster />
       </QueryClientProvider>
     </BrowserRouter>
   );
