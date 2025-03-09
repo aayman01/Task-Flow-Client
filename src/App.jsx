@@ -10,6 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Register from "./pages/Register";
 import { Toaster } from "react-hot-toast";
 import { SessionProvider } from "./context/SessionContext";
+import VerifyEmail from "./pages/VerifyEmail";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,14 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <Verify2FA />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/verify-email"
+              element={
+                <ProtectedRoute>
+                  <VerifyEmail />
                 </ProtectedRoute>
               }
             />

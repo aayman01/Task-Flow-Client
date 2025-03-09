@@ -9,10 +9,14 @@ const Login = () => {
 
     const handleLoginSuccess = (userData) => {
       login(userData);
-      if (!userData.isFaActive) {
+      if (!userData.isEmailVerified) {
+        navigate("/verify-email");
+      } else if (userData.isEmailVerified) {
         navigate("/setup-2fa");
-      } else {
+      } else if (userData.isFaActive) {
         navigate("/verify-2fa");
+      } else {
+        navigate("/dashboard");
       }
     };
     return <LoginForm onLoginSuccess={handleLoginSuccess} />
