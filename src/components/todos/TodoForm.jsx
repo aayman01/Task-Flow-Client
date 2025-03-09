@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Calendar } from "@/components/ui/calendar";
+// import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
@@ -26,7 +26,7 @@ const TodoForm = ({ initialData, onClose }) => {
   const [description, setDescription] = useState(
     initialData?.description || ""
   );
-  const [dueDate, setDueDate] = useState(initialData?.dueDate || null);
+  // const [dueDate, setDueDate] = useState(initialData?.dueDate || null);
   const [status, setStatus] = useState(initialData?.status || "pending");
   const [priority, setPriority] = useState(initialData?.priority || "medium");
   const [error, setError] = useState(null);
@@ -86,21 +86,15 @@ const TodoForm = ({ initialData, onClose }) => {
                   variant="outline"
                   className={cn(
                     "w-full justify-start text-left font-normal",
-                    !dueDate && "text-muted-foreground"
+                    // !dueDate && "text-muted-foreground"
                   )}
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
-                  {dueDate ? format(dueDate, "PPP") : <span>Pick a date</span>}
+                  {/* {dueDate ? format(dueDate, "PPP") : <span>Pick a date</span>} */}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="start">
-                <Calendar
-                  mode="single"
-                  selected={dueDate || undefined}
-                  onSelect={setDueDate}
-                  initialFocus
-                  className="pointer-events-auto"
-                />
+                
               </PopoverContent>
             </Popover>
           </div>
