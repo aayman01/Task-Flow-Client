@@ -11,9 +11,11 @@ const Login = () => {
       login(userData);
       if (!userData.isEmailVerified) {
         navigate("/verify-email");
-      } else {
+      } else if (!userData.isFaActive) {
         navigate("/setup-2fa");
-      } 
+      } else {
+        navigate("/verify-2fa");
+      }
     };
     return <LoginForm onLoginSuccess={handleLoginSuccess} />
 };
