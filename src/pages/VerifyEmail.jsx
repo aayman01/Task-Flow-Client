@@ -71,7 +71,7 @@ const VerifyEmail = () => {
                     setCode(value);
                   }
                 }}
-                placeholder="123456"
+                placeholder="OTP"
                 className="form-input text-center text-xl tracking-widest"
                 maxLength={6}
                 autoComplete="one-time-code"
@@ -83,7 +83,7 @@ const VerifyEmail = () => {
             <Button
               type="submit"
               className="w-full bg-blue-500 hover:bg-blue-600 text-white"
-              disabled={isLoading || code.length !== 6}
+              disabled={isLoading}
             >
               {isLoading ? (
                 <>

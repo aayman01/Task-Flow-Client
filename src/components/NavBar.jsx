@@ -11,15 +11,23 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { CheckSquare, LogOut, Settings, User } from "lucide-react";
 import AnimatedContainer from "@/components/ui/AnimatedContainer";
 import { useSession } from "@/context/SessionContext";
+import { logoutUser } from "@/lib/authApi";
 
 const Navbar= () => {
   const navigate = useNavigate();
   const {isLoggedIn, user, logout} = useSession();
 
 
-  const handleLogout = () => {
-    logout();
-    navigate("/");
+  const handleLogout = async () => {
+    try {
+      const {data} = await logoutUser();
+      if(data){
+        logout();
+      }
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getInitials = (name) => {

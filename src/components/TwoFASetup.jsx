@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import toast from "react-hot-toast";
 import { setup2FA } from "@/lib/authApi";
 import { useEffect, useState } from "react";
+import { Loader2 } from "lucide-react";
 
 const TwoFASetup = ({ onSetupComplete }) => {
   const { isLoading } = useSession();
@@ -40,7 +41,11 @@ const TwoFASetup = ({ onSetupComplete }) => {
         <div className="flex justify-center mb-4">
           {/* Replace with your actual QR code component or image */}
           <div className="bg-gray-200 p-4 rounded">
-            <img src={response.qrCode} alt="2 FA qr code" />
+            {response.qrCode ? (
+              <img src={response.qrCode} alt="2 FA qr code" />
+            ) : (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            )}
           </div>
         </div>
         <p className="text-center text-sm text-gray-500">
