@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 import AnimatedContainer from "@/components/ui/AnimatedContainer";
 import Navbar from "@/components/NavBar";
+import { Link } from "react-router";
 
 const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
       <main>
         {/* Hero Section */}
         <section className="pt-12 pb-24 flex flex-col items-center justify-center h-screen">
@@ -29,24 +29,12 @@ const Home = () => {
               delay={400}
               className="mt-8 flex flex-wrap gap-4 justify-center"
             >
-              <Button size="lg" className="text-base px-8 bg-blue-400 hover:bg-blue-500">
-                Get Started
-                {/* <Link to={isAuthenticated ? "/dashboard" : "/auth"}>
-                  {isAuthenticated ? "Go to Dashboard" : "Get Started"}{" "}
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link> */}
+              <Button
+                size="lg"
+                className="text-base px-8 bg-blue-400 hover:bg-blue-500"
+              >
+                <Link to="/login">Get Started</Link>
               </Button>
-
-              {/* {!isAuthenticated && (
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="text-base px-8"
-                >
-                  <Link to="/auth">Login</Link>
-                </Button>
-              )} */}
             </AnimatedContainer>
           </div>
         </section>

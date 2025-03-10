@@ -3,6 +3,7 @@ import AnimatedContainer from "@/components/ui/AnimatedContainer";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Circle, Clock } from "lucide-react";
 import TodoList from "@/components/todos/TodoList";
+import Navbar from "@/components/NavBar";
 
 
 const Dashboard = () => {
@@ -58,34 +59,36 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <AnimatedContainer animation="fade-in">
-        <h1 className="text-3xl font-bold mb-2">Dashboard</h1>
-        <p className="text-muted-foreground mb-6">
-          Manage your tasks and stay organized
-        </p>
-      </AnimatedContainer>
+    <div>
+      <Navbar/>
+      <div className="container mx-auto px-4 py-8">
+        <AnimatedContainer animation="fade-in">
+          <h1 className="text-3xl font-bold mb-2">Dashboard</h1>
+          <p className="text-muted-foreground mb-6">
+            Manage your tasks and stay organized
+          </p>
+        </AnimatedContainer>
 
-      <AnimatedContainer
-        animation="slide-up"
-        delay={100}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
-      >
-        {/* Simple JavaScript map function for rendering stats */}
-        {stats.map((stat, i) => (
-          <Card key={i} className={`border ${stat.color}`}>
-            <CardContent className="p-4 flex items-center gap-4">
-              {stat.icon}
-              <div>
-                <p className="text-sm text-muted-foreground">{stat.title}</p>
-                <h3 className="text-2xl font-bold">{stat.value}</h3>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </AnimatedContainer>
-      <TodoList />
-
+        <AnimatedContainer
+          animation="slide-up"
+          delay={100}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
+        >
+          {/* Simple JavaScript map function for rendering stats */}
+          {stats.map((stat, i) => (
+            <Card key={i} className={`border ${stat.color}`}>
+              <CardContent className="p-4 flex items-center gap-4">
+                {stat.icon}
+                <div>
+                  <p className="text-sm text-muted-foreground">{stat.title}</p>
+                  <h3 className="text-2xl font-bold">{stat.value}</h3>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </AnimatedContainer>
+        <TodoList />
+      </div>
     </div>
   );
 };

@@ -10,16 +10,15 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { CheckSquare, LogOut, Settings, User } from "lucide-react";
 import AnimatedContainer from "@/components/ui/AnimatedContainer";
+import { useSession } from "@/context/SessionContext";
 
 const Navbar= () => {
   const navigate = useNavigate();
-  let isAuthenticated = false;
-  const user = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-  };
+  const {isLoggedIn, user, logout} = useSession();
+
 
   const handleLogout = () => {
+    logout();
     navigate("/");
   };
 
@@ -43,15 +42,15 @@ const Navbar= () => {
           <span className="font-bold text-xl">TaskFlow</span>
         </Link>
 
-        {isAuthenticated ? (
-          <div className="flex items-center gap-4">
+        {isLoggedIn ? (
+          <div className="flex items-center gap-4 py-3">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
                   className="relative h-10 w-10 rounded-full"
                 >
-                  <Avatar className="h-9 w-9">
+                  <Avatar className="h-12 w-12">
                     <AvatarFallback className="bg-primary/10 text-primary">
                       {user?.name
                         ? getInitials(user.name)
